@@ -1,5 +1,6 @@
-package com.elsospring.ElsoSpring;
+package com.elsospring.ElsoSpring.controller;
 
+import com.elsospring.ElsoSpring.service.SpyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ public class HomeController {
 //    private SpyGirl spicy;
 
     // Loosely coupled eljárás - MŰKÖDIK A SESSION SCOPE, van SETTER alapú beinnyektálás
-    private SpyGirl spicy;
+    private SpyService spyService;
 
 //    @Autowired
 //    public void setSpicy(SpyGirl spicy) {
@@ -26,16 +27,13 @@ public class HomeController {
 
     // Loosely coupled eljárás - MŰKÖDIK A SESSION SCOPE, van beinnyektálás - CONTROLLER alapú
     @Autowired
-    public HomeController(SpyGirl spicy) {
-        this.spicy = spicy;
+    public HomeController(SpyService spyService) {
+        this.spyService = spyService;
     }
 
     @RequestMapping("/")
     public String index(){
-
-
-
         //return "Szia Dorka :)";
-        return spicy.iSaySomething();
+        return spyService.iSaySomething();
     }
 }
