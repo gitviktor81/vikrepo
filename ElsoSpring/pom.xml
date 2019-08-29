@@ -30,7 +30,12 @@
 			<scope>test</scope>
 		</dependency>
 
-
+		<!--@EnableAutoConfiguration igényli, ami ahhoz kell, hogy az application.properties képes legyen Bean bol olvasni osztalyvaltozokat -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 
 	</dependencies>
 

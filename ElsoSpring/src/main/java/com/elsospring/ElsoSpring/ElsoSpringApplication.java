@@ -11,27 +11,34 @@ import sun.dc.path.PathError;
 
 import java.util.Arrays;
 
+// Megkeresi a pacakge-ben levo Bean-eket
 //@ComponentScan({"com.elsospring.ElsoSpring", "com.spy"})
+
 @SpringBootApplication
 //@Configuration
 //@EnableAutoConfiguration
 //@ComponentScan
+// Ahhoz kell, hogy az application.properties képes legyen Bean bol olvasni osztalyvaltozokat
+@EnableAutoConfiguration
 public class ElsoSpringApplication {
 
-	// A Bean annotation hatására be fog kerülni a bean listába és látni fogja ez általt a container, még akkor is ha közvetlenül a Person osztály nem bean
-	@Bean
-	public Person giveMeANewPerson() {
-		return new Person("Gyula", 20);
-	}
+	// A Bean annotation hatására is be tud kerülni (nem csak @Component által) a bean listába és látni fogja ez általt a container, még akkor is ha közvetlenül a Person osztály nem bean
+//	@Bean
+//	public Person giveMeANewPerson() {
+//		return new Person("Gyula", 20);
+//	}
 
 	public static void main(String[] args) {
 		ApplicationContext ct = SpringApplication.run(ElsoSpringApplication.class, args);
-		String[] beanArray = ct.getBeanDefinitionNames();
-		Arrays.sort(beanArray);
+//		String[] beanArray = ct.getBeanDefinitionNames();
+//		Arrays.sort(beanArray);
+//
+//		for (String name : beanArray) {
+//			System.out.println(name);
+//		}
 
-		for (String name : beanArray) {
-			System.out.println(name);
-		}
+		System.out.println(ct.getBean("person"));
+
 	}
 
 }

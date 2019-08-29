@@ -2,6 +2,7 @@ package com.elsospring.ElsoSpring.controller;
 
 import com.elsospring.ElsoSpring.service.SpyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +25,13 @@ public class HomeController {
 //        this.spicy = spicy;
 //    }
 
+//    Apllication properties-bol érték kiolvasása
+    @Value("${HomeController.msg}")
+    public String msg;
+    @Value("${HomeController.randomValue}")
+    public String randomValue;
+    @Value("${HomeController.randomInt}")
+    public int randomInt;
 
     // Loosely coupled eljárás - MŰKÖDIK A SESSION SCOPE, van beinnyektálás - CONTROLLER alapú
     @Autowired
@@ -34,6 +42,6 @@ public class HomeController {
     @RequestMapping("/")
     public String index(){
         //return "Szia Dorka :)";
-        return spyService.iSaySomething();
+        return spyService.iSaySomething() + "  - -  " +  msg + "  - -  " + randomValue + "  - -  " + randomInt;
     }
 }
