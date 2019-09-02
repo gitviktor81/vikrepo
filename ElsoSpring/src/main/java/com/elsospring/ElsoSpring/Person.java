@@ -1,5 +1,6 @@
 package com.elsospring.ElsoSpring;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +15,18 @@ public class Person {
     private String address;
     private String phoneNumber;
 
+    @Value("${spring.profiles.active}")
+    private String selectedProfile;
+
+    @Value("${msg}")
+    private String message;
+
     public Person() {
 
+    }
+
+    public Person(String selectedProfile) {
+        this.selectedProfile = selectedProfile;
     }
 
     public Person(String firstName, String lastName, int age, String address, String phoneNumber) {
@@ -66,14 +77,27 @@ public class Person {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getSelectedProfile() {
+        return selectedProfile;
+    }
+
+    public void setSelectedProfile(String selectedProfile) {
+        this.selectedProfile = selectedProfile;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     @Override
     public String toString() {
-        return "Ez a Person objektum {" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+        return "Person{" +
+                "selectedProfile='" + selectedProfile + '\'' +
+                ", message='" + message + '\'' +
                 '}';
     }
 }

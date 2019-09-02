@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import sun.dc.path.PathError;
 
 import java.util.Arrays;
@@ -28,6 +29,17 @@ public class ElsoSpringApplication {
 //		return new Person("Gyula", 20);
 //	}
 
+//	@Bean(name="gyula")
+//	@Profile("dev")
+//	public Person giveMeADevPerson() {
+//		return new Person("dev");
+//	}
+//	@Bean(name="gyula")
+//	@Profile("prod")
+//	public Person giveMeAProdPerson() {
+//		return new Person("prod");
+//	}
+
 	public static void main(String[] args) {
 		ApplicationContext ct = SpringApplication.run(ElsoSpringApplication.class, args);
 //		String[] beanArray = ct.getBeanDefinitionNames();
@@ -36,7 +48,7 @@ public class ElsoSpringApplication {
 //		for (String name : beanArray) {
 //			System.out.println(name);
 //		}
-
+//		System.out.println(ct.getBean("gyula"));
 		System.out.println(ct.getBean("person"));
 
 	}
