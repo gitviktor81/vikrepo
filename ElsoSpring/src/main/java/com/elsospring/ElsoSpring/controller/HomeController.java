@@ -3,10 +3,12 @@ package com.elsospring.ElsoSpring.controller;
 import com.elsospring.ElsoSpring.service.SpyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+//@RestController
+@Controller
 public class HomeController {
 
     // Tightly coupled eljárás - EZ ÁLTAL NEM FOG MŰKÖDNI A SESSION SCOPE, mivel nincs beinnyektálás
@@ -40,8 +42,9 @@ public class HomeController {
     }
 
     @RequestMapping("/")
-    public String index(){
+    public String stories(){
         //return "Szia Dorka :)";
-        return spyService.iSaySomething() + "  - -  " +  msg + "  - -  " + randomValue + "  - -  " + randomInt;
+        return "stories";
+        //return spyService.iSaySomething() + "  - -  " +  msg + "  - -  " + randomValue + "  - -  " + randomInt;
     }
 }

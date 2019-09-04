@@ -49,7 +49,7 @@ public class ElsoSpringApplication {
 //			System.out.println(name);
 //		}
 //		System.out.println(ct.getBean("gyula"));
-		System.out.println(ct.getBean("person"));
+//		System.out.println(ct.getBean("person"));
 
 	}
 
