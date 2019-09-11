@@ -4,6 +4,7 @@ import com.elsospring.ElsoSpring.service.SpyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,8 +43,9 @@ public class HomeController {
     }
 
     @RequestMapping("/")
-    public String stories(){
+    public String stories(Model model){
         //return "Szia Dorka :)";
+        model.addAttribute("pageTitle", "dddd");
         return "stories";
         //return spyService.iSaySomething() + "  - -  " +  msg + "  - -  " + randomValue + "  - -  " + randomInt;
     }
