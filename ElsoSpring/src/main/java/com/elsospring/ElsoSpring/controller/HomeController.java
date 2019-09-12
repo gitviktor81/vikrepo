@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,5 +49,14 @@ public class HomeController {
         model.addAttribute("pageTitle", "dddd");
         return "stories";
         //return spyService.iSaySomething() + "  - -  " +  msg + "  - -  " + randomValue + "  - -  " + randomInt;
+    }
+
+    @RequestMapping("/stories/{id}")
+    public String searchForStory(Model model, @PathVariable(value="id") String id) throws Exception {
+        if (id == null) {
+            throw new Exception("Nincs ilyen id!!!");
+        }
+        model.addAttribute("id", id);
+        return "stories";
     }
 }
