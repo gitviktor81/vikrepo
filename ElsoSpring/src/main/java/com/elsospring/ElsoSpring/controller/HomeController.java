@@ -1,5 +1,7 @@
 package com.elsospring.ElsoSpring.controller;
 
+import com.elsospring.ElsoSpring.domain.Story;
+import com.elsospring.ElsoSpring.repository.StoryRepository;
 import com.elsospring.ElsoSpring.service.SpyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,9 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 //@RestController
 @Controller
 public class HomeController {
+
+    @Autowired
+    StoryRepository storyRepository;
 
     // Tightly coupled eljárás - EZ ÁLTAL NEM FOG MŰKÖDNI A SESSION SCOPE, mivel nincs beinnyektálás
     // Miden alkalommal amikor acontroller létrejön létrehoz egy SpyGirl-t
@@ -47,6 +54,7 @@ public class HomeController {
     public String stories(Model model){
         //return "Szia Dorka :)";
         model.addAttribute("pageTitle", "dddd");
+        model.addAttribute("stories", this.getStories());
         return "stories";
         //return spyService.iSaySomething() + "  - -  " +  msg + "  - -  " + randomValue + "  - -  " + randomInt;
     }
@@ -58,5 +66,10 @@ public class HomeController {
         }
         model.addAttribute("id", id);
         return "stories";
+    }
+
+    private List<Story> getStories(){
+        List<Story> stories = storyRepository.findAll();
+        return stories;
     }
 }

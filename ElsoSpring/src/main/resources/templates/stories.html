@@ -6,5 +6,14 @@
 <body>
     <h1>Stories</h1>
     <label>Ez az URL-be irt ID: </label><span th:text="${id}">ID</span>
+
+
+    <article th:each="story : ${stories}">
+        <h1 th:text="${story.title}">cim</h1>
+        <h3 th:text="${story.content}">content</h3>
+        <h3 th:text="${story.posted}">content</h3>
+        <h3 th:text="${story.blogger}">blogger összes adata</h3>
+    </article>
 </body>
 </html>
+ 
