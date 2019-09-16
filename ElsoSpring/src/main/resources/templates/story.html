@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymleaf.com">
+<head>
+    <title th:text="${pageTitle}">Story by id oldal</title>
+</head>
+<body>
+<h1>Story</h1>
+
+<article>
+    <h1 th:text="${story.title}">cim</h1>
+    <h3 th:text="${story.content}">content</h3>
+    <h3 th:text="${story.posted}">content</h3>
+    <h3 th:text="${story.blogger}">blogger összes adata</h3>
+</article>
+</body>
+</html>

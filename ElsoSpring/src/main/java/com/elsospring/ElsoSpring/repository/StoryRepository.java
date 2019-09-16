@@ -8,4 +8,10 @@ import java.util.Optional;
 
 public interface StoryRepository extends CrudRepository<Story, Long> {
     List<Story> findAll();
+
+    Story findFirstByOrderByPostedDesc();
+
+    Story findById(Integer id);
+
+    Story findByTitle(String title);
 }

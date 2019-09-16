@@ -3,19 +3,28 @@ package com.elsospring.ElsoSpring.domain;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
+@Entity(name = "Stories")
 public class Story {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "cim")
     private String title;
+    @Column(columnDefinition = "CLOB")
     private String content;
     private Date posted;
     @ManyToOne
     private Blogger blogger;
 
     public Story() {
+    }
+
+    public Story(String title, String content, Date posted, Blogger blogger) {
+        this.title = title;
+        this.content = content;
+        this.posted = posted;
+        this.blogger = blogger;
     }
 
     public int getId() {

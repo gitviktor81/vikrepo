@@ -18,6 +18,11 @@ public class Blogger {
     public Blogger() {
     }
 
+    public Blogger(String name, int age) {
+        this.name = name;
+        this.age = age;;
+    }
+
     public int getId() {
         return id;
     }
