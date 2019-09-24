@@ -47,6 +47,14 @@ public class StoryService {
         return specificTitle;
     }
 
+    public List<Story> getStoriesByBloggerName(String bloggerName) throws Exception {
+        List<Story> specificStories = storyRepository.findAllByBloggerNameIgnoreCaseOrderByPostedDesc(bloggerName);
+        if (specificStories == null) {
+            throw new Exception("Nincs ilyen névvel blogger az adatbazisban!!!");
+        }
+        return specificStories;
+    }
+
     @PostConstruct
     private void init() {
         Blogger blogger = new Blogger("Belso Gyula", 25);

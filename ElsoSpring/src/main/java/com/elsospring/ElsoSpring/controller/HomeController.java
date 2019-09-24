@@ -64,12 +64,12 @@ public class HomeController {
         return "stories";
         //return spyService.iSaySomething() + "  - -  " +  msg + "  - -  " + randomValue + "  - -  " + randomInt;
     }
-
-    @RequestMapping("/story")
-    public String searchForStory(Model model) {
-        model.addAttribute("story", storyService.getLastStory());
-        return "story";
-    }
+//
+//    @RequestMapping("/story")
+//    public String searchForStory(Model model) {
+//        model.addAttribute("story", storyService.getLastStory());
+//        return "story";
+//    }
 
     @RequestMapping("/story/{id}")
     public String searchForStory(Model model, @PathVariable(value="id") Integer id) throws Exception {
@@ -81,15 +81,15 @@ public class HomeController {
 
         return "story";
     }
-
-    @RequestMapping("/title/{title}")
-    public String searchForStory(Model model, @PathVariable(value="title") String title) throws Exception {
-        if (title == null) {
-            throw new Exception("Nincs ilyen cimmel story-nk!!!");
-        }
-
-        model.addAttribute("story", storyService.getSpecificStory(title));
-
-        return "story";
-    }
+//
+//    @RequestMapping("/title/{title}")
+//    public String searchForStory(Model model, @PathVariable(value="title") String title) throws Exception {
+//        if (title == null) {
+//            throw new Exception("Nincs ilyen cimmel story-nk!!!");
+//        }
+//
+//        model.addAttribute("story", storyService.getSpecificStory(title));
+//
+//        return "story";
+//    }
 }

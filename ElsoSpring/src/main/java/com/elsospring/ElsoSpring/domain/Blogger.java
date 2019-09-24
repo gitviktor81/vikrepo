@@ -1,5 +1,7 @@
 package com.elsospring.ElsoSpring.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,8 @@ public class Blogger {
     private int id;
     private String name;
     private int age;
+
+    @JsonBackReference
     @OneToMany(mappedBy = "blogger")
     private List<Story> stories;
 
