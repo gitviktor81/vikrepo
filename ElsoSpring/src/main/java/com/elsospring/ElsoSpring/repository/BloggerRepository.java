@@ -1,12 +1,15 @@
 package com.elsospring.ElsoSpring.repository;
 
-import com.elsospring.ElsoSpring.domain.Blogger;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface BloggerRepository extends CrudRepository<Blogger, Long> {
-    List<Blogger> findAll();
+public class BloggerRepository {
+    private JdbcTemplate jdbc;
+
+    @Autowired
+    public BloggerRepository(JdbcTemplate jdbc) {
+        this.jdbc = jdbc;
+    }
 }

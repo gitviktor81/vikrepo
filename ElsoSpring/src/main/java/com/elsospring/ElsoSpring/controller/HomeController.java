@@ -70,17 +70,17 @@ public class HomeController {
 //        model.addAttribute("story", storyService.getLastStory());
 //        return "story";
 //    }
-
-    @RequestMapping("/story/{id}")
-    public String searchForStory(Model model, @PathVariable(value="id") Integer id) throws Exception {
-        if (id == null) {
-            throw new Exception("Nincs ilyen id!!!");
-        }
-
-        model.addAttribute("story", storyService.getStoryById(id));
-
-        return "story";
-    }
+//
+//    @RequestMapping("/story/{id}")
+//    public String searchForStory(Model model, @PathVariable(value="id") Integer id) throws Exception {
+//        if (id == null) {
+//            throw new Exception("Nincs ilyen id!!!");
+//        }
+//
+//        model.addAttribute("story", storyService.getStoryById(id));
+//
+//        return "story";
+//    }
 //
 //    @RequestMapping("/title/{title}")
 //    public String searchForStory(Model model, @PathVariable(value="title") String title) throws Exception {

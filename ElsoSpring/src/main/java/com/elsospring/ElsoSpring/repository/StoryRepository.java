@@ -1,25 +1,30 @@
 package com.elsospring.ElsoSpring.repository;
 
 import com.elsospring.ElsoSpring.domain.Story;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
-public interface StoryRepository extends CrudRepository<Story, Long> {
-    List<Story> findAll();
+public class StoryRepository {
+    private JdbcTemplate jdbc;
 
-    Story findFirstByOrderByPostedDesc();
+    @Autowired
+    public StoryRepository(JdbcTemplate jdbc) {
+        this.jdbc = jdbc;
+    }
 
-    Story findById(Integer id);
+    public List<Story> findAll() {
+        String sql = "select * from story order by posted desc";
 
-//    @Query(value = "SELECT * from stories where title = ?1 LIMIT 1", nativeQuery = true)
-    @Query(value = "SELECT * from stories where cim = :title LIMIT 1", nativeQuery = true)
-    Story findByTitle(@Param("title") String title);
-
-    List<Story> findAllByBloggerNameIgnoreCaseOrderByPostedDesc(String name);
+        return jdbc.query(sql, ((resultSet, i) -> new Story(
+                resultSet.getInt("id"),
+                resultSet.getString("cim"),
+                resultSet.getString("content"),
+                resultSet.getDate("posted"),
+                resultSet.getInt("blogger_id")
+        )));
+    }
 }

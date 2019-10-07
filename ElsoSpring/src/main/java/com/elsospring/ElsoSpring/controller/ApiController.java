@@ -19,19 +19,19 @@ public class ApiController {
     public void setStoryService(StoryService storyService) {
         this.storyService = storyService;
     }
-
-    @RequestMapping("/story")
-    public Story searchForStory() {
-        return storyService.getLastStory();
-    }
-
-    @RequestMapping("/title/{title}")
-    public Story searchForStory(@PathVariable(value="title") String title) throws Exception {
-        return storyService.getSpecificStory(title);
-    }
-
-    @RequestMapping("/stories/{name}")
-    public List<Story> searchForUser(@PathVariable(value="name") String name) throws Exception {
-        return storyService.getStoriesByBloggerName(name);
-    }
+//
+//    @RequestMapping("/story")
+//    public Story searchForStory() {
+//        return storyService.getLastStory();
+//    }
+//
+//    @RequestMapping("/title/{title}")
+//    public Story searchForStory(@PathVariable(value="title") String title) throws Exception {
+//        return storyService.getSpecificStory(title);
+//    }
+//
+//    @RequestMapping("/stories/{name}")
+//    public List<Story> searchForUser(@PathVariable(value="name") String name) throws Exception {
+//        return storyService.getStoriesByBloggerName(name);
+//    }
 }

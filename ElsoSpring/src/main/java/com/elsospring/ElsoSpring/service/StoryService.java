@@ -30,36 +30,36 @@ public class StoryService {
     public List<Story> getStories() {
         return storyRepository.findAll();
     }
-
-    public Story getLastStory() {
-        return storyRepository.findFirstByOrderByPostedDesc();
-    }
-
-    public Story getStoryById(Integer id) {
-        return storyRepository.findById(id);
-    }
-
-    public Story getSpecificStory(String title) throws Exception {
-        Story specificTitle = storyRepository.findByTitle(title);
-        if (specificTitle == null) {
-            throw new Exception("Nincs ilyen cimmel story az adatbazisban!!!");
-        }
-        return specificTitle;
-    }
-
-    public List<Story> getStoriesByBloggerName(String bloggerName) throws Exception {
-        List<Story> specificStories = storyRepository.findAllByBloggerNameIgnoreCaseOrderByPostedDesc(bloggerName);
-        if (specificStories == null) {
-            throw new Exception("Nincs ilyen névvel blogger az adatbazisban!!!");
-        }
-        return specificStories;
-    }
-
-    @PostConstruct
-    private void init() {
-        Blogger blogger = new Blogger("Belso Gyula", 25);
-        bloggerRepository.save(blogger);
-        Story story = new Story("Belsop cim", "Belso tartalom", new Date(), blogger);
-        storyRepository.save(story);
-    }
+//
+//    public Story getLastStory() {
+//        return storyRepository.findFirstByOrderByPostedDesc();
+//    }
+//
+//    public Story getStoryById(Integer id) {
+//        return storyRepository.findById(id);
+//    }
+//
+//    public Story getSpecificStory(String title) throws Exception {
+//        Story specificTitle = storyRepository.findByTitle(title);
+//        if (specificTitle == null) {
+//            throw new Exception("Nincs ilyen cimmel story az adatbazisban!!!");
+//        }
+//        return specificTitle;
+//    }
+//
+//    public List<Story> getStoriesByBloggerName(String bloggerName) throws Exception {
+//        List<Story> specificStories = storyRepository.findAllByBloggerNameIgnoreCaseOrderByPostedDesc(bloggerName);
+//        if (specificStories == null) {
+//            throw new Exception("Nincs ilyen névvel blogger az adatbazisban!!!");
+//        }
+//        return specificStories;
+//    }
+//
+//    @PostConstruct
+//    private void init() {
+//        Blogger blogger = new Blogger("Belso Gyula", 25);
+//        bloggerRepository.save(blogger);
+//        Story story = new Story("Belsop cim", "Belso tartalom", new Date(), blogger);
+//        storyRepository.save(story);
+//    }
 }
