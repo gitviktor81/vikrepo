@@ -58,11 +58,11 @@ public class HomeController {
 
     @RequestMapping("/")
     public String stories(Model model){
-        //return "Szia Dorka :)";
-        model.addAttribute("pageTitle", "dddd");
-        model.addAttribute("stories", storyService.getStories());
-        return "stories";
-        //return spyService.iSaySomething() + "  - -  " +  msg + "  - -  " + randomValue + "  - -  " + randomInt;
+        return "Szia Dorka :)";
+//        model.addAttribute("pageTitle", "dddd");
+//        model.addAttribute("stories", storyService.getStories());
+//        return "stories";
+//        //return spyService.iSaySomething() + "  - -  " +  msg + "  - -  " + randomValue + "  - -  " + randomInt;
     }
 //
 //    @RequestMapping("/story")
