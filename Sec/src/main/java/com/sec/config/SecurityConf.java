@@ -13,6 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class SecurityConf extends WebSecurityConfigurerAdapter {
 
+
+    // EZ AZ EGYES AUTHENTIKÁCIÓKAT CONFIGURÁLJA - JOGKÖRÖKET - ROLES
     @Autowired
     protected void configureAuth(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -24,5 +26,17 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
                 .withUser("kivadmin")
                 .password("{noop}letmein")
                 .roles("ADMIN");
+    }
+
+    // EZ A SZERVER VISELKEDÉSÉT KONFIGURÁLJA
+    @Override
+    protected void configure(HttpSecurity httpSec) throws Exception {
+        httpSec
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/").permitAll()
+                .antMatchers("/delete").hasRole("ADMIN")  // request küldőjének van-e ADMIN jogköre
+                .antMatchers("/admin/**").hasRole("ADMIN")  // /admin/valami esetén ADMINNAK kell lenniea felhasználónak
+                .and().formLogin().permitAll(); // DE a form login-t mindenkin számára elérhetővé teszem
+
     }
 }
