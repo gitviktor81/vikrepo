@@ -33,10 +33,11 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSec) throws Exception {
         httpSec
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/").permitAll()
-                .antMatchers("/delete").hasRole("ADMIN")  // request küldőjének van-e ADMIN jogköre
-                .antMatchers("/admin/**").hasRole("ADMIN")  // /admin/valami esetén ADMINNAK kell lenniea felhasználónak
-                .and().formLogin().permitAll(); // DE a form login-t mindenkin számára elérhetővé teszem
+                .antMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated()
+                .and()
+                .formLogin().loginPage("/login").permitAll()
+                .and()
+                .logout().logoutSuccessUrl("/login?logout").permitAll();
 
     }
 }
