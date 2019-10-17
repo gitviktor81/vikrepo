@@ -33,11 +33,7 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSec) throws Exception {
         httpSec
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated()
-                .and()
-                .formLogin().loginPage("/login").permitAll()
-                .and()
-                .logout().logoutSuccessUrl("/login?logout").permitAll();
+                .antMatchers("/admin/**").hasRole("ADMIN");
 
     }
 }
